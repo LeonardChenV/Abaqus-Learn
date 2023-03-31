@@ -1,0 +1,45 @@
+def just_open(filename):
+    xlApp = Dispatch("Excel.Application")
+    xlApp.Visible = False
+    xlBook = xlApp.Workbooks.Open(filename)
+    xlBook.Save()
+    xlBook.Close()
+    
+wb = openpyxl.load_workbook('D:\AbaqusPython\CDPModel.xlsx')
+# 选择工作表
+ws = wb.active
+# 修改单元格的值
+ws['B4'] = 40
+#Fcu
+wb.save('D:\AbaqusPython\CDPModel.xlsx')   
+just_open('D:\AbaqusPython\CDPModel.xlsx')
+wb = openpyxl.load_workbook('D:\AbaqusPython\CDPModel.xlsx', data_only=True)
+ws = wb.active
+SYYLYB = []
+for row in range(7, 44):
+    row_data = []
+    for col in range(15, 17):
+        row_data.append(ws.cell(row=row, column=col).value)
+    SYYLYB.append(tuple(row_data))
+SYYLYB=tuple(SYYLYB)
+SYSSYB = []
+for row in range(7, 44):
+    row_data = []
+    for col in range(17, 19):
+        row_data.append(ws.cell(row=row, column=col).value)
+    SYSSYB.append(tuple(row_data))
+SYSSYB=tuple(SYSSYB)
+SLYLYB = []
+for row in range(75, 94):
+    row_data = []
+    for col in range(14, 16):
+        row_data.append(ws.cell(row=row, column=col).value)
+    SLYLYB.append(tuple(row_data))
+SLYLYB=tuple(SLYLYB)
+SLSSYB = []
+for row in range(75, 94):
+    row_data = []
+    for col in range(16, 18):
+        row_data.append(ws.cell(row=row, column=col).value)
+    SLSSYB.append(tuple(row_data))
+SLSSYB=tuple(SLSSYB)
